@@ -34,7 +34,7 @@ export class ProdutoService {
 
     // Checar se a Produto não foi encontrada
     if (!Produto)
-      throw new HttpException('Produto não encontrada!', HttpStatus.NOT_FOUND);
+      throw new HttpException('Produto não encontrado!', HttpStatus.NOT_FOUND);
 
     // Retornar a Produto, caso ela exista
     return Produto;
@@ -83,17 +83,17 @@ export class ProdutoService {
     // Verifica se a Produto existe
     if (!buscaProduto || !produto.id)
       throw new HttpException(
-        'Produto não foi encontrada!',
+        'Produto não foi encontrado!',
         HttpStatus.NOT_FOUND,
       );
 
     // Caso o Categoria tenha sido preenchido
     if (produto.categoria) {
-      const Categoria = await this.categoriaService.findById(
+      const categoria = await this.categoriaService.findById(
         produto.categoria.id,
       );
 
-      if (!Categoria)
+      if (!categoria)
         throw new HttpException(
           'Categoria não foi encontrado!',
           HttpStatus.NOT_FOUND,
@@ -112,7 +112,7 @@ export class ProdutoService {
 
     if (!buscaProduto)
       throw new HttpException(
-        'Produto não foi encontrada!',
+        'Produto não foi encontrado!',
         HttpStatus.NOT_FOUND,
       );
 

@@ -13,7 +13,7 @@ import {
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../entities/produto.entity';
 
-@Controller('/postagens')
+@Controller('/produtos')
 export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}
 
@@ -37,14 +37,14 @@ export class ProdutoController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() Produto: Produto): Promise<Produto> {
-    return this.produtoService.create(Produto);
+  create(@Body() produto: Produto): Promise<Produto> {
+    return this.produtoService.create(produto);
   }
 
   @Put()
   @HttpCode(HttpStatus.OK)
-  update(@Body() Produto: Produto): Promise<Produto> {
-    return this.produtoService.update(Produto);
+  update(@Body() produto: Produto): Promise<Produto> {
+    return this.produtoService.update(produto);
   }
 
   @Delete('/:id')
